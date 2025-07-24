@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Ruido de la plata 1</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruido de la plata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="main-container">
+        <!-- Sección 1: Home -->
+        <section id="home" class="section active">
+            <div class="content">
+                <h1 class="main-title clickable-title" onclick="showSection('home')">Ruido de la plata</h1>
+                <nav class="category-nav">
+                    <button class="category-btn" onclick="showSection('quienes')">quienes somos</button>
+                    <button class="category-btn" onclick="showSection('hacemos')">que hacemos</button>
+                    <button class="category-btn" onclick="showSection('ruido')">que es ruido de la plata</button>
+                    <button class="category-btn" onclick="showSection('radio')">radio del rio</button>
+                    <button class="category-btn" onclick="showSection('contacto')">contacto</button>
+                </nav>
+                <div class="image-container home-image">
+                    <img src="https://i.imgur.com/UkBSbXr.jpeg" alt="Ruido de la plata - Inicio" class="section-image">
+                    <div class="photo-caption">FOTO: VICTORIA SOLNIK ©</div>
+                </div>
+                
+                <!-- Microdatos en el home - Estilo técnico con Space Mono -->
+                <div class="home-microdata">
+                    <div class="microdata-technical">
+                        <div class="microdata-header">ESCUCHANDO AL RÍO DE LA PLATA</div>
+                        <div class="microdata-subheader">ARCHIVO SONORO EN PROGRESO</div>
+                        <div class="microdata-readings">
+                            <div class="microdata-line center">● MONTEVIDEO <span id="homeClock">14:32:47</span></div>
+                            <div class="microdata-line center">AGUA <span id="homeWaterTemp">16.2°C</span> ≈ ALTITUD 0.8M</div>
+                            <div class="microdata-line center">CORRIENTE <span id="homeCurrentDir">SE-E</span> ⌇ PRESIÓN <span id="homePressure">1013.2</span> hPa</div>
+                            <div class="microdata-line center">VIENTO <span id="homeWindSpeed">12.4</span> km/h ○ HUMEDAD <span id="homeHumidity">78</span>%</div>
+                            <div class="microdata-line center">〰️</div>
+                            <div class="microdata-line center">© 2025 RUIDO DE LA PLATA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Quienes somos -->
+        <section id="quienes" class="section">
+            <div class="content">
+                <h1 class="main-title clickable-title" onclick="showSection('home')">Ruido de la plata</h1>
+                <nav class="category-nav">
+                    <button class="category-btn active" onclick="showSection('quienes')">quienes somos</button>
+                    <button class="category-btn" onclick="showSection('hacemos')">que hacemos</button>
+                    <button class="category-btn" onclick="showSection('ruido')">que es ruido de la plata</button>
+                    <button class="category-btn" onclick="showSection('radio')">radio del rio</button>
+                    <button class="category-btn" onclick="showSection('contacto')">contacto</button>
+                </nav>
+                <div class="text-content">
+                    <div class="image-container">
+                        <img src="https://i.imgur.com/Y7CGTcy.jpeg" alt="Victoria Solnik" class="section-image">
+                    </div>
+                    <p><strong>Victoria Solnik, montevideo, uruguay (1984)</strong> artista visual y curadora. Su obra explora los vínculos entre territorios y memorias a través de prácticas que combinan el registro visual, sonoro, archivo y performance.</p>
+                    
+                    <p>Es coordinadora de curadurías del centro de fotografía de montevideo y ha trabajado en festivales como san josé foto (uy) y verzasca fotofest (sw).</p>
+                    
+                    <p>Fue jurado de los premios sony (swpa 2025) (uk) y colabora como curadora en la plataforma vist. Acompaña procesos curatoriales para el diseño de exposiciones en montevideo.</p>
+                    
+                    <p>Es co-fundadora del colectivo polenta para publicaciones fotográficas y es parte del photobook club de montevideo. Ha participado en residencias artísticas en la costa de la rambla sur de montevideo en un proyecto de registro audiovisual que también se despliega en la creación sonora.</p>
+                    
+                    <div class="image-container">
+                        <img src="https://i.imgur.com/vQaNcIY.jpeg" alt="Federico Pignatta" class="section-image">
+                    </div>
+                    <p><strong>Federico pignatta, florida, uruguay (1986)</strong> se dedica al diseño gráfico, investiga en artes visuales y experimentación sonora. Su práctica fusiona pensamiento conceptual con métodos experimentales y tecnologías emergentes.</p>
+                    
+                    <p>Ha desarrollado talleres de arte especialmente dirigidos a comunidades en contexto de encierro, promoviendo procesos creativos inclusivos y participativos. Formó parte del colectivo atlántico negro (sintetizador), y como productor musical, destaca su colaboración con cedric myton (the congos).</p>
+                    
+                    <p>Es fundador y director creativo de holomate, una plataforma web para la creación musical que incluye un controlador midi portátil, contribuyendo a ampliar las posibilidades de</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Que hacemos -->
+        <section id="hacemos" class="section">
+            <div class="content">
+                <h1 class="main-title clickable-title" onclick="showSection('home')">Ruido de la plata</h1>
+                <nav class="category-nav">
+                    <button class="category-btn" onclick="showSection('quienes')">quienes somos</button>
+                    <button class="category-btn active" onclick="showSection('hacemos')">que hacemos</button>
+                    <button class="category-btn" onclick="showSection('ruido')">que es ruido de la plata</button>
+                    <button class="category-btn" onclick="showSection('radio')">radio del rio</button>
+                    <button class="category-btn" onclick="showSection('contacto')">contacto</button>
+                </nav>
+                <div class="text-content">
+                    <div class="image-container">
+                        <img src="https://i.imgur.com/LaQgDv0.jpeg" alt="Que hacemos" class="section-image">
+                    </div>
+                    <p>Desplegamos performances sonoras que exploran las resonancias, flujos y texturas acústicas de este cuerpo de agua. Mediante la cuidadosa intersección de registros de campo, procesamientos digitales y momentos de improvisación, originamos espacios de escucha alternativos para abordar las complejidades de la relación histórica y político-política con el entorno, revelando nuevas capas de significado en la experiencia sonora.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Que es ruido de la plata -->
+        <section id="ruido" class="section">
+            <div class="content">
+                <h1 class="main-title clickable-title" onclick="showSection('home')">Ruido de la plata</h1>
+                <nav class="category-nav">
+                    <button class="category-btn" onclick="showSection('quienes')">quienes somos</button>
+                    <button class="category-btn" onclick="showSection('hacemos')">que hacemos</button>
+                    <button class="category-btn active" onclick="showSection('ruido')">que es ruido de la plata</button>
+                    <button class="category-btn" onclick="showSection('radio')">radio del rio</button>
+                    <button class="category-btn" onclick="showSection('contacto')">contacto</button>
+                </nav>
+                <div class="text-content">
+                    <div class="image-container">
+                        <img src="https://i.imgur.com/nRvXKB1.jpeg" alt="Investigación 1" class="section-image">
+                    </div>
+                    <p><strong>Investigación y experimentación sonora.</strong></p>
+                    
+                    <p>Ruido de la Plata articula un proceso de investigación artística que comprende el paisaje sonoro como territorio de conocimiento. A través de metodologías experimentales que combinan derivas urbanas, cartografías afectivas y tecnologías de escucha, el proyecto desarrolla un archivo sensible de las transformaciones territoriales y memoriales vinculadas a la rambla sur de Montevideo.</p>
+                    
+                    <div class="image-container">
+                        <img src="https://i.imgur.com/PpLXgnL.jpeg" alt="Investigación 2" class="section-image">
+                    </div>
+                    
+                    <p>Esta práctica de investigación-creación establece diálogos entre cuerpo, agua y paisaje, entendiendo el sonido como una forma de conocimiento situado que revela las capas ocultas de la experiencia urbana. Los registros de campo, procesos de escucha profunda y performance electroacústica funcionan como herramientas de investigación que permiten acceder a dimensiones políticas, poéticas y afectivas del territorio.</p>
+                    
+                    <div class="image-container">
+                        <img src="https://i.imgur.com/23rY4el.jpeg" alt="Investigación 3" class="section-image">
+                    </div>
+                    
+                    <p>El proyecto se materializa en conciertos, instalaciones y acciones site-specific que funcionan como dispositivos de transmisión de este conocimiento sonoro, invitando a experimentar formas alternativas de habitar y comprender la ciudad a través de la escucha activa y la reflexión crítica sobre nuestras relaciones con el entorno.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Radio del rio -->
+        <section id="radio" class="section">
+            <div class="content">
+                <h1 class="main-title clickable-title" onclick="showSection('home')">Ruido de la plata</h1>
+                <nav class="category-nav">
+                    <button class="category-btn" onclick="showSection('quienes')">quienes somos</button>
+                    <button class="category-btn" onclick="showSection('hacemos')">que hacemos</button>
+                    <button class="category-btn" onclick="showSection('ruido')">que es ruido de la plata</button>
+                    <button class="category-btn active" onclick="showSection('radio')">radio del rio</button>
+                    <button class="category-btn" onclick="showSection('contacto')">contacto</button>
+                </nav>
+                <div class="text-content">
+                    <div class="sound-section">
+                        <div class="sound-player-full">
+                            <div class="sound-player-controls">
+                                <div class="sound-controls-left">
+                                    <button class="sound-control-btn" onclick="soundPreviousTrack()" title="Anterior">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0v12h3V0zM3 6l9-6v12z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="sound-control-btn play-btn" onclick="soundTogglePlayPause()" id="soundPlayBtn">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 0v12l9-6z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="sound-control-btn" onclick="soundNextTrack()" title="Siguiente">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 0v12H9V0zM9 6L0 0v12z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="sound-control-btn pause-btn" onclick="soundStop()" title="Detener">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="12" height="12" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="sound-brand">radio del rio</div>
+                            </div>
+                            
+                            <div class="sound-channel-list" id="soundChannelList">
+                                <div class="sound-channel-item selected" onclick="soundSelectChannel(0)">frecuencia 01: próximamente</div>
+                                <div class="sound-channel-item" onclick="soundSelectChannel(1)">frecuencia 02: próximamente</div>
+                                <div class="sound-channel-item" onclick="soundSelectChannel(2)">frecuencia 03: próximamente</div>
+                                <div class="sound-channel-item" onclick="soundSelectChannel(3)">frecuencia 04: próximamente</div>
+                                <div class="sound-channel-item" onclick="soundSelectChannel(4)">frecuencia 05: próximamente</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>rio vivo</strong> (idea que charlamos hoy con el cafecito)</p>
+                    
+                    <!-- Microdatos del Río de la Plata -->
+                    <div class="river-data">
+                        <div class="river-data-title">— datos en tiempo real</div>
+                        <div class="river-data-grid">
+                            <div class="river-data-item">
+                                <span class="river-data-label">temperatura agua:</span>
+                                <span class="river-data-value" id="waterTemp">16.2°c</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">altitud:</span>
+                                <span class="river-data-value">0.8m</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">dirección corriente:</span>
+                                <span class="river-data-value" id="currentDir">se-e</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">presión atmosférica:</span>
+                                <span class="river-data-value" id="pressure">1013.2 hpa</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">viento:</span>
+                                <span class="river-data-value" id="windSpeed">12.4 km/h</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">humedad:</span>
+                                <span class="river-data-value" id="humidity">78%</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">montevideo:</span>
+                                <span class="river-data-value" id="liveClock">[--:--:--]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 6: Contacto -->
+        <section id="contacto" class="section">
+            <div class="content">
+                <h1 class="main-title clickable-title" onclick="showSection('home')">Ruido de la plata</h1>
+                <nav class="category-nav">
+                    <button class="category-btn" onclick="showSection('quienes')">quienes somos</button>
+                    <button class="category-btn" onclick="showSection('hacemos')">que hacemos</button>
+                    <button class="category-btn" onclick="showSection('ruido')">que es ruido de la plata</button>
+                    <button class="category-btn" onclick="showSection('radio')">radio del rio</button>
+                    <button class="category-btn active" onclick="showSection('contacto')">contacto</button>
+                </nav>
+                <div class="text-content">
+                    <p style="text-align: left;">hola@ruidodelaplata.uy</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll fijo en la parte inferior -->
+    <div class="scroll-bar-fixed" id="scrollBarFixed">
+        <div class="scroll-content-fixed">
+            • DESARROLLANDO PROCESOS DE INVESTIGACIÓN ARTÍSTICA EN EL PAISAJE SONORO DEL RÍO DE LA PLATA COMO TERRITORIO DE CONOCIMIENTO Y EXPERIENCIA SENSIBLE •
+        </div>
+        <button class="scroll-close-btn" onclick="closeScrollBar()">×</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
