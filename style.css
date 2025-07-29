@@ -1,0 +1,983 @@
+/* Variables CSS */
+:root {
+    --primary-font: 'Inter', sans-serif;
+    --mono-font: 'Space Mono', monospace;
+    --font-weight-black: 900;
+    --letter-spacing: -0.04em;
+    
+    --color-black: #000000;
+    --color-gray: #666666;
+    --color-gray-dark: #444444;
+    --color-gray-light: #999999;
+    --color-white: #ffffff;
+    --color-bg: #f5f5f5;
+    --color-yellow: #96918c;
+    
+    --mobile-padding: 16px;
+    --tablet-padding: 24px;
+    --desktop-padding: 32px;
+    
+    --baseline-position: 20px;
+    
+    /* NUEVAS VARIABLES PARA TIPOGRAFÍA DESKTOP */
+    --desktop-line-height: 1.1;
+    --desktop-paragraph-spacing: 8px;
+    --menu-baseline: 1.1;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #efefef;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    background: #efefef;
+    color: var(--color-black);
+    line-height: 1.2;
+}
+
+/* CLASES DE VISIBILIDAD RESPONSIVA */
+.mobile-only {
+    display: block;
+}
+
+.desktop-only {
+    display: none;
+}
+
+/* NAVBAR MÓVIL */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #efefef;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--mobile-padding);
+}
+
+.navbar-title {
+    font-size: 18px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.11;
+    text-transform: lowercase;
+    cursor: pointer;
+}
+
+.navbar-menu {
+    font-size: 18px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.11;
+    text-transform: lowercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* LAYOUT PRINCIPAL */
+.main-layout {
+    display: flex;
+    margin-top: 60px;
+    min-height: calc(100vh - 60px);
+}
+
+/* SIDEBAR - CONFIGURACIÓN BASE */
+.sidebar {
+    background: var(--color-yellow);
+    padding: var(--mobile-padding);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 60px;
+}
+
+/* SIDEBAR HEADER - SOLO DESKTOP */
+.sidebar-header {
+    display: none;
+}
+
+.site-title {
+    font-size: 18px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.11;
+    text-transform: lowercase;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.sidebar-nav {
+    margin-top: var(--baseline-position);
+    text-align: left;
+}
+
+.sidebar-item {
+    display: block;
+    background: none;
+    border: none;
+    font-family: var(--primary-font);
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.1;
+    text-transform: lowercase;
+    text-align: left;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 16px;
+    transition: opacity 0.6s ease-out;
+    width: 100%;
+    opacity: 0;
+}
+
+.sidebar-item.active {
+    opacity: 1;
+}
+
+.sidebar-item.visible {
+    opacity: 1;
+}
+
+/* MICRODATOS UNIFICADOS */
+.microdata-container {
+    margin-bottom: 20px;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+}
+
+.microdata-container.visible {
+    opacity: 1;
+}
+
+.microdata-technical {
+    font-family: var(--primary-font);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+}
+
+.microdata-readings {
+    margin-top: 2px;
+}
+
+.microdata-line {
+    margin-bottom: 0px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.microdata-line span {
+    font-weight: 600;
+}
+
+/* ÁREA DE CONTENIDO */
+.content-area {
+    background: #efefef;
+    padding: var(--mobile-padding);
+    padding-top: 60px;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* CONTENT BLOCKS - ESTRUCTURA DESKTOP */
+.content-block {
+    max-width: none;
+    margin: 0;
+}
+
+.text-block {
+    margin-bottom: 40px;
+}
+
+.image-full {
+    margin-bottom: 40px;
+}
+
+.image-full img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* MICRODATOS EN HOME - SOLO MÓVIL */
+.home-microdata {
+    position: fixed;
+    bottom: var(--mobile-padding);
+    right: var(--mobile-padding);
+    opacity: 1;
+    z-index: 100;
+}
+
+.section {
+    display: none;
+    padding-top: 0;
+}
+
+.section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.1;
+    text-transform: lowercase;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+/* Pie de foto */
+.photo-caption {
+    font-family: var(--primary-font);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: right;
+    margin-top: 6px;
+}
+
+/* Imágenes */
+.section-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-image:hover {
+    transform: scale(1.02);
+}
+
+/* Contenido de texto */
+.text-content {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.3;
+    margin-top: calc(var(--baseline-position) + 40px);
+    padding-bottom: 40px;
+}
+
+.text-content p,
+.text-block p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.4;
+}
+
+/* EMAIL EN CONTACTO */
+.email-contact {
+    font-size: 24px !important;
+    font-weight: var(--font-weight-black) !important;
+    text-transform: lowercase !important;
+    margin-bottom: 32px !important;
+}
+
+.call-to-action p {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+}
+
+/* REPRODUCTOR */
+.sound-section {
+    margin-bottom: 32px;
+}
+
+.sound-player-full {
+    width: 100%;
+    background: #45555b;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.sound-player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.sound-controls-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sound-brand {
+    font-size: 14px;
+    line-height: 1.15;
+    color: #efefef;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    text-transform: none;
+}
+
+.sound-control-btn {
+    width: 28px;
+    height: 28px;
+    background: var(--color-bg);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: var(--color-gray-dark);
+    padding: 0;
+    position: relative;
+    transform-origin: center;
+}
+
+.sound-control-btn:hover {
+    background: var(--color-gray-light);
+    color: var(--color-black);
+    transform: scale(1.05);
+}
+
+.sound-control-btn:active {
+    transform: scale(0.95);
+    background: var(--color-gray-dark);
+}
+
+.sound-control-btn:focus {
+    outline: 2px solid var(--color-black);
+    outline-offset: 2px;
+}
+
+.sound-control-btn svg {
+    width: 10px;
+    height: 10px;
+    transition: all 0.2s ease;
+}
+
+.sound-control-btn.play-btn svg {
+    margin-left: 1px;
+}
+
+.sound-control-btn.playing {
+    background: var(--color-black) !important;
+    color: var(--color-white) !important;
+}
+
+.sound-control-btn.playing:hover {
+    background: var(--color-gray-dark) !important;
+    transform: scale(1.05);
+}
+
+.sound-control-btn.playing svg {
+    color: var(--color-white) !important;
+}
+
+.sound-control-btn.playing svg path,
+.sound-control-btn.playing svg rect {
+    fill: var(--color-white) !important;
+}
+
+.sound-channel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.sound-channel-item {
+    background: var(--color-bg);
+    border: none;
+    border-radius: 12px;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    text-transform: none;
+    color: var(--color-gray-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1.15;
+}
+
+.sound-channel-item:hover {
+    background: var(--color-gray-light);
+    color: var(--color-black);
+    transform: translateX(2px);
+}
+
+.sound-channel-item:active {
+    background: var(--color-gray-dark);
+    color: var(--color-white);
+}
+
+.sound-channel-item.selected {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border: none;
+    font-weight: var(--font-weight-black);
+}
+
+.sound-channel-item.selected:hover {
+    background: #d9e600;
+    color: var(--color-black);
+}
+
+/* MICRODATOS DEL RÍO */
+.river-data {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-black);
+}
+
+.river-data-title {
+    font-size: 14px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    margin-bottom: 16px;
+    line-height: 1.15;
+}
+
+.river-data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.river-data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--color-black);
+}
+
+.river-data-item:last-child {
+    border-bottom: none;
+}
+
+.river-data-label {
+    font-size: 12px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-gray-dark);
+    line-height: 1.15;
+}
+
+.river-data-value {
+    font-size: 12px;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-black);
+    line-height: 1.15;
+    text-align: right;
+}
+
+.river-data-value#liveClock {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+#homeClock {
+    animation: pulse 2s ease-in-out infinite;
+    display: inline !important;
+    visibility: visible !important;
+}
+
+/* SCROLL BAR FIJO */
+.scroll-bar-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: var(--color-yellow);
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-radius: 0;
+    padding: 8px 0;
+    overflow: hidden;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.scroll-bar-fixed.hidden {
+    transform: translateY(100%);
+}
+
+.scroll-content-fixed {
+    white-space: nowrap;
+    color: var(--color-black);
+    font-size: 11px;
+    line-height: 1.15;
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    animation: scroll-left 45s linear infinite;
+    padding-left: 100%;
+    font-family: var(--primary-font);
+    flex: 1;
+    animation-delay: 0.1s;
+}
+
+.scroll-close-btn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-black);
+    font-size: 16px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    font-style: normal;
+    font-family: var(--primary-font);
+}
+
+.scroll-close-btn:hover {
+    color: var(--color-gray-dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* =================================
+   DESKTOP STYLES - 768px and up
+   ================================= */
+
+@media (min-width: 768px) {
+    /* CAMBIAR VISIBILIDAD */
+    .mobile-only {
+        display: none !important;
+    }
+    
+    .desktop-only {
+        display: block;
+    }
+    
+    /* LAYOUT PRINCIPAL DESKTOP */
+    .main-layout {
+        margin-top: 0;
+        min-height: 100vh;
+    }
+    
+    /* SIDEBAR DESKTOP - 1/8 DE PANTALLA + 10% */
+    .sidebar {
+        width: 13.75%; /* 12.5% + 10% = 13.75% */
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 12px 20px 40px 8px; /* SOLO EL TÍTULO A 12PX DEL TOP */
+        justify-content: flex-start; /* CAMBIO: flex-start en lugar de space-between */
+        overflow-y: auto;
+        background: #efefef; /* Mismo color que el panel derecho */
+    }
+    
+    /* HEADER DEL SIDEBAR */
+    .sidebar-header {
+        display: block;
+        margin-bottom: 40px; /* RESTAURADO MARGIN BOTTOM ORIGINAL */
+    }
+    
+    .site-title {
+        font-size: 15px; /* MISMO TAMAÑO QUE MENÚ */
+        margin-bottom: 0;
+        line-height: 1.11; /* Misma proporción que navbar móvil */
+    }
+    
+    /* NAVEGACIÓN SIDEBAR */
+    .sidebar-nav {
+        margin-top: 12px; /* SUBIDO 3PX PARA ALINEAR BASELINE - de 15px a 12px */
+        flex-grow: 1;
+    }
+    
+    .sidebar-item {
+        font-size: 15px; /* TAMAÑO UNIFICADO CON CONTENIDO */
+        margin-bottom: 5px; /* COMPACTO */
+        opacity: 1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        line-height: 0.97; /* ALTURA DE LÍNEA AJUSTADA */
+        position: relative;
+        padding-left: 0;
+    }
+    
+    /* HOVER - CAMBIAR COLOR AL NUEVO TONO */
+    .sidebar-item:hover {
+        color: #6a45f4;
+    }
+    
+    /* ESTADO ACTIVO - CÍRCULO CON ANIMACIÓN */
+    .sidebar-item.active::before {
+        content: "●";
+        position: absolute;
+        left: -12px;
+        top: 0;
+        color: var(--color-black);
+        animation: pulseCircle 2s ease-in-out infinite;
+        font-size: 8px;
+        line-height: 1.1; /* ALTURA DE LÍNEA SINCRONIZADA CON MENÚ */
+    }
+    
+    /* ANIMACIÓN SUTIL PERO MEMORABLE DEL CÍRCULO */
+    @keyframes pulseCircle {
+        0%, 100% { 
+            opacity: 1; 
+            transform: scale(1);
+        }
+        50% { 
+            opacity: 0.6; 
+            transform: scale(1.2);
+        }
+    }
+    
+    .sidebar-item.active {
+        opacity: 1;
+        font-weight: var(--font-weight-black);
+    }
+    
+    /* MICRODATOS SIDEBAR DESKTOP */
+    .sidebar .microdata-container {
+        opacity: 1;
+        margin-top: auto; /* MANTENER EN LA PARTE INFERIOR */
+        margin-bottom: 0;
+        position: absolute;
+        bottom: 40px;
+        left: 8px;
+        right: 20px;
+    }
+    
+    .sidebar .microdata-technical {
+        font-size: 9px;
+    }
+    
+    /* ÁREA DE CONTENIDO DESKTOP - 7/8 DE PANTALLA AJUSTADO */
+    .content-area {
+        width: 86.25%; /* 100% - 13.75% = 86.25% */
+        margin-left: 13.75%; /* Mismo ancho que sidebar */
+        padding: 90px 80px 60px 60px; /* BAJADO 3PX MÁS PARA ALINEAR BASELINE - de 87px a 90px */
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    /* CONTENT BLOCKS DESKTOP - FOTOGRAFÍA PRIMERO, TEXTO DESPUÉS */
+    .content-block {
+        max-width: none;
+        margin: 0 0 80px 0;
+    }
+    
+    /* IMAGEN 4/8 DE PANTALLA ALINEADA A LA IZQUIERDA */
+    .image-full {
+        margin-bottom: 40px;
+        width: 50%; /* 4/8 de pantalla */
+        float: left;
+        clear: left;
+    }
+    
+    .image-full img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    
+    /* TEXTO CORRIDO CON EL MISMO ANCHO QUE LA FOTOGRAFÍA - TIPOGRAFÍA MEJORADA */
+    .text-block {
+        margin-bottom: 60px;
+        width: 50%; /* Mismo ancho que la fotografía (4/8) */
+        max-width: none;
+        clear: left;
+        float: left;
+    }
+    
+    /* **TIPOGRAFÍA UNIFICADA PARA DESKTOP** */
+    .text-block p {
+        font-size: 15px; /* TAMAÑO UNIFICADO CON MENÚ */
+        line-height: 1.1; /* BASELINE EXACTO SINCRONIZADO */
+        margin-bottom: var(--desktop-paragraph-spacing); /* ESPACIADO REDUCIDO */
+        width: 100%; /* Párrafos con el ancho completo igual a la fotografía */
+        max-width: none;
+        
+        /* TIPOGRAFÍA SINCRONIZADA */
+        font-weight: 600; /* Peso menor para mejor legibilidad en párrafos largos */
+        letter-spacing: var(--letter-spacing);
+        color: var(--color-black);
+    }
+    
+    /* SEPARACIÓN VISUAL ENTRE PÁRRAFOS REDUCIDA */
+    .text-block p:not(:last-child) {
+        margin-bottom: var(--desktop-paragraph-spacing);
+        padding-bottom: 0; /* Sin padding adicional para mantenerlo apretado */
+    }
+    
+    /* PÁRRAFOS CON ÉNFASIS (strong) MANTIENEN EL PESO ORIGINAL */
+    .text-block p strong {
+        font-weight: var(--font-weight-black);
+        line-height: 1.1; /* BASELINE SINCRONIZADO */
+    }
+    
+    /* CLEARFIX PARA FLOTANTES */
+    .content-block::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    /* TÍTULOS DE SECCIÓN DESKTOP - OCULTOS */
+    .section-title {
+        display: none; /* Ocultar títulos ya que están en el menú */
+    }
+    
+    /* EMAIL CONTACTO DESKTOP - TIPOGRAFÍA UNIFICADA */
+    .email-contact {
+        font-size: 15px !important; /* TAMAÑO UNIFICADO */
+        line-height: 1.1 !important; /* BASELINE SINCRONIZADO */
+        width: 100%;
+        font-weight: var(--font-weight-black) !important;
+        margin-bottom: var(--desktop-paragraph-spacing) !important;
+    }
+    
+    /* CALL TO ACTION UNIFICADO */
+    .call-to-action p {
+        font-size: 15px !important; /* TAMAÑO UNIFICADO */
+        line-height: 1.1 !important; /* BASELINE SINCRONIZADO */
+        font-weight: 600 !important;
+        width: 100%;
+        margin-bottom: var(--desktop-paragraph-spacing) !important;
+    }
+    
+    /* PIE DE FOTO DESKTOP */
+    .photo-caption {
+        font-size: 9px;
+        margin-top: 6px;
+    }
+    
+    /* REPRODUCTOR Y DATOS AJUSTADOS AL NUEVO LAYOUT */
+    .sound-section {
+        margin-bottom: 60px;
+        width: 50%; /* Mismo ancho que fotografías */
+        float: left;
+        clear: left;
+    }
+    
+    .sound-player-full {
+        width: 100%;
+        max-width: none;
+    }
+    
+    /* RIVER DATA DESKTOP */
+    .river-data {
+        width: 50%; /* Mismo ancho que fotografías */
+        max-width: none;
+        margin-top: 40px;
+        float: left;
+        clear: left;
+    }
+    
+    /* SCROLL BAR - AJUSTE PARA DESKTOP */
+    .scroll-bar-fixed {
+        left: 0; /* Cubrir todo el ancho de pantalla */
+        width: 100vw; /* Todo el ancho de pantalla */
+    }
+}
+
+/* =================================
+   LARGE DESKTOP - 1200px and up
+   ================================= */
+
+@media (min-width: 1200px) {
+    .content-area {
+        padding: 80px 120px 80px 80px;
+    }
+    
+    /* TIPOGRAFÍA UNIFICADA PARA LARGE DESKTOP */
+    .text-block p {
+        font-size: 15px; /* TAMAÑO UNIFICADO */
+        line-height: 1.1; /* BASELINE SINCRONIZADO */
+        width: 100%; /* Mantener el ancho completo igual a la fotografía */
+        margin-bottom: var(--desktop-paragraph-spacing); /* ESPACIADO REDUCIDO */
+        font-weight: 600; /* Peso óptimo para legibilidad */
+    }
+    
+    .section-title {
+        font-size: 36px;
+        margin-bottom: 50px;
+    }
+    
+    .email-contact {
+        font-size: 15px !important; /* TAMAÑO UNIFICADO */
+        line-height: 1.1 !important; /* BASELINE SINCRONIZADO */
+    }
+    
+    .call-to-action p {
+        font-size: 15px !important; /* TAMAÑO UNIFICADO */
+        line-height: 1.1 !important; /* BASELINE SINCRONIZADO */
+        margin-bottom: var(--desktop-paragraph-spacing) !important;
+    }
+    
+    .content-block {
+        max-width: none; /* Sin restricción de ancho máximo */
+        margin: 0 0 100px 0;
+    }
+}
+
+/* =================================
+   MOBILE OVERLAY - MANTENER ORIGINAL
+   ================================= */
+
+@media (max-width: 767px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 50%;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 60px);
+        z-index: 1500;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        justify-content: space-between;
+        min-height: calc(100vh - 60px);
+    }
+    
+    .sidebar.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .sidebar.active .sidebar-item,
+    .sidebar.active .microdata-container {
+        opacity: 1;
+    }
+    
+    .content-area {
+        width: 100%;
+        min-height: calc(100vh - 60px);
+    }
+    
+    /* En móvil, los microdatos de home ocupan todo el ancho */
+    .home-microdata {
+        left: var(--mobile-padding);
+        right: var(--mobile-padding);
+    }
+    
+    /* MOBILE - SIDEBAR ITEMS */
+    .sidebar-item {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    
+    /* MOBILE - SECTION TITLE */
+    .section-title {
+        position: absolute;
+        top: calc(var(--baseline-position) - 3px);
+        left: var(--mobile-padding);
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    
+    /* MOBILE - TEXT CONTENT */
+    .text-content {
+        margin-top: calc(var(--baseline-position) + 40px);
+    }
+    
+    /* MOBILE - GRID LAYOUT SE CONVIERTE EN COLUMNA */
+    .content-grid {
+        display: block;
+    }
+    
+    .text-column,
+    .image-column {
+        padding: 0;
+        margin-bottom: 20px;
+    }
+    
+    .intro-section {
+        margin-bottom: 30px;
+    }
+    
+    .subtitle {
+        font-size: 16px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
