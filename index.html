@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Ruido de la plata 02_</title>
+  <title>ruido de la plata 2</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -177,40 +177,162 @@
                         <p><strong>rio vivo</strong> (idea que charlamos hoy con el cafecito)</p>
                     </div>
                     
-                    <div class="sound-section">
-                        <div class="sound-player-full">
-                            <div class="sound-player-controls">
-                                <div class="sound-controls-left">
-                                    <button class="sound-control-btn" onclick="soundPreviousTrack()" title="Anterior">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0v12h3V0zM3 6l9-6v12z" fill="currentColor"/>
-                                        </svg>
-                                    </button>
-                                    <button class="sound-control-btn play-btn" onclick="soundTogglePlayPause()" id="soundPlayBtn">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M3 0v12l9-6z" fill="currentColor"/>
-                                        </svg>
-                                    </button>
-                                    <button class="sound-control-btn" onclick="soundNextTrack()" title="Siguiente">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 0v12H9V0zM9 6L0 0v12z" fill="currentColor"/>
-                                        </svg>
-                                    </button>
-                                    <button class="sound-control-btn pause-btn" onclick="soundStop()" title="Detener">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="12" height="12" fill="currentColor"/>
-                                        </svg>
-                                    </button>
+                    <!-- Sintetizador Virtual Drone - Versión Armónica -->
+                    <div class="drone-synthesizer harmony" id="droneSynth">
+                        <div class="synth-header">
+                            <div class="synth-title">GENERADOR ARMÓNICO</div>
+                            <div class="synth-status" id="synthStatus">SILENCIO</div>
+                        </div>
+                        
+                        <div class="harmony-grid">
+                            <!-- Oscilador Fundamental - Temperatura -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">FUNDAMENTAL</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(0)" id="harm0Power">●</button>
                                 </div>
-                                <div class="sound-brand">radio del rio</div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob0" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">TEMP</div>
+                                    <div class="knob-value" id="temp0Value">16.2°</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq0Display">110.0 Hz</span>
+                                </div>
                             </div>
                             
-                            <div class="sound-channel-list" id="soundChannelList">
-                                <div class="sound-channel-item selected" onclick="soundSelectChannel(0)">frecuencia 01: próximamente</div>
-                                <div class="sound-channel-item" onclick="soundSelectChannel(1)">frecuencia 02: próximamente</div>
-                                <div class="sound-channel-item" onclick="soundSelectChannel(2)">frecuencia 03: próximamente</div>
-                                <div class="sound-channel-item" onclick="soundSelectChannel(3)">frecuencia 04: próximamente</div>
-                                <div class="sound-channel-item" onclick="soundSelectChannel(4)">frecuencia 05: próximamente</div>
+                            <!-- Oscilador Quinta - Presión -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">QUINTA</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(1)" id="harm1Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob1" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">PRES</div>
+                                    <div class="knob-value" id="pres1Value">1013</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq1Display">165.0 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Oscilador Octava - Humedad -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">OCTAVA</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(2)" id="harm2Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob2" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">HUMI</div>
+                                    <div class="knob-value" id="humi2Value">78%</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq2Display">220.0 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Oscilador Tercera - Viento -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">TERCERA</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(3)" id="harm3Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob3" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">VIEN</div>
+                                    <div class="knob-value" id="wind3Value">12.4</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq3Display">138.6 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Control Master -->
+                            <div class="master-section">
+                                <div class="master-header">ARMONÍA</div>
+                                <button class="master-toggle" onclick="toggleHarmonyMaster()" id="harmonyMaster">
+                                    <div class="master-indicator"></div>
+                                </button>
+                                <div class="master-label">ACTIVAR</div>
+                                
+                                <!-- Visualizador de Acordes -->
+                                <div class="chord-display">
+                                    <div class="chord-name" id="chordName">C MAJ</div>
+                                    <div class="chord-notes">
+                                        <span class="note" id="note0">C</span>
+                                        <span class="note" id="note1">E</span>
+                                        <span class="note" id="note2">G</span>
+                                        <span class="note" id="note3">C</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Panel de Información -->
+                            <div class="info-panel">
+                                <div class="info-header">DATOS → MÚSICA</div>
+                                <div class="mapping-info">
+                                    <div class="mapping-item">
+                                        <span class="data-type">TEMPERATURA</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">FUNDAMENTAL</span>
+                                    </div>
+                                    <div class="mapping-item">
+                                        <span class="data-type">PRESIÓN</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">QUINTA</span>
+                                    </div>
+                                    <div class="mapping-item">
+                                        <span class="data-type">HUMEDAD</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">OCTAVA</span>
+                                    </div>
+                                    <div class="mapping-item">
+                                        <span class="data-type">VIENTO</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">TERCERA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stream de datos en tiempo real -->
+                        <div class="data-stream-harmony">
+                            <div class="stream-title">CONDICIONES ACTUALES DEL RÍO</div>
+                            <div class="stream-grid">
+                                <div class="stream-item">
+                                    <span class="stream-label">temperatura agua</span>
+                                    <span class="stream-value" id="liveTemp2">16.2°C</span>
+                                </div>
+                                <div class="stream-item">
+                                    <span class="stream-label">presión atmosférica</span>
+                                    <span class="stream-value" id="livePres2">1013.2 hPa</span>
+                                </div>
+                                <div class="stream-item">
+                                    <span class="stream-label">humedad relativa</span>
+                                    <span class="stream-value" id="liveHumi2">78%</span>
+                                </div>
+                                <div class="stream-item">
+                                    <span class="stream-label">velocidad viento</span>
+                                    <span class="stream-value" id="liveWind2">12.4 km/h</span>
+                                </div>
+                                <div class="stream-item time-item">
+                                    <span class="stream-label">montevideo</span>
+                                    <span class="stream-value" id="liveTime2">--:--:--</span>
+                                </div>
                             </div>
                         </div>
                     </div>
