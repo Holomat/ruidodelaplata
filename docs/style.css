@@ -267,8 +267,8 @@ body {
     font-weight: var(--font-weight-black);
     letter-spacing: var(--letter-spacing);
     color: var(--color-black);
-    text-transform: lowercase;
-    margin-bottom: 4px;
+    text-transform: none;
+    margin-bottom: 0;
     margin-top: -16px;
 }
 
@@ -277,8 +277,9 @@ body {
     font-weight: 400;
     letter-spacing: var(--letter-spacing);
     color: var(--color-black);
-    text-transform: lowercase;
+    text-transform: none;
     opacity: 0.6;
+    margin-top: 2px;
     margin-bottom: 24px;
 }
 
