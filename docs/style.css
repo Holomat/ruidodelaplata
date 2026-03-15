@@ -465,38 +465,30 @@ body {
     gap: 10px;
 }
 
-/* Fader wrap — custom track + fill + range overlay */
+/* Fader wrap — contenedor redondeado, sin línea vertical */
 .te-fader-wrap {
     height: 150px;
     width: 44px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.te-track {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: #ddd;
-    border-radius: 2px;
+    border-radius: 10px;
     overflow: hidden;
+    background: rgba(150, 145, 140, 0.1);
+    border: 1px solid rgba(150, 145, 140, 0.18);
 }
 
+/* Fill sube desde abajo proporcional al valor */
 .te-track-fill {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     height: 0%;
-    background: var(--ch-color, #000);
-    border-radius: 2px;
+    background: var(--ch-color, #96918c);
+    opacity: 0.35;
     transition: height 0.05s linear;
 }
 
-/* Range input — transparent, sits over custom track */
+/* Range input — invisible, cubre todo el contenedor */
 .te-fader {
     position: absolute;
     width: 150px;
@@ -524,28 +516,27 @@ body {
     border: none;
 }
 
-/* Fader cap — thin bar, scale-slider style */
+/* Thumb — línea horizontal solamente, sin vertical */
 .te-fader::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 4px;
-    height: 40px;
-    background: var(--ch-color, rgba(0,0,0,0.3));
+    width: 3px;
+    height: 36px;
+    background: var(--ch-color, #96918c);
     border: none;
     border-radius: 2px;
-    margin-top: 2px;
+    margin-top: 4px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: opacity 0.2s;
 }
 
 .te-fader::-webkit-slider-thumb:hover {
-    background: var(--ch-color, rgba(0,0,0,0.5));
-    filter: brightness(0.85);
+    opacity: 0.7;
 }
 
 .te-fader::-moz-range-thumb {
-    width: 4px;
-    height: 40px;
-    background: var(--ch-color, rgba(0,0,0,0.3));
+    width: 3px;
+    height: 36px;
+    background: var(--ch-color, #96918c);
     border: none;
     border-radius: 2px;
     cursor: pointer;
