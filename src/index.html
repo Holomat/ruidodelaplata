@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruido de la plata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- NAVBAR MÓVIL -->
+    <nav class="navbar mobile-only">
+        <h1 class="navbar-title" onclick="showSection('home')">ruido de la plata</h1>
+        <button class="navbar-menu" onclick="toggleSidebar()">menú</button>
+    </nav>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <div class="main-layout">
+        <!-- PANEL IZQUIERDO FIJO - DESKTOP -->
+        <aside class="sidebar desktop-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="site-title" onclick="showSection('home')">ruido de la plata</h1>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="sidebar-item active" onclick="showSection('quienes')">quienes somos</button>
+                <button class="sidebar-item" onclick="showSection('hacemos')">que hacemos</button>
+                <button class="sidebar-item" onclick="showSection('ruido')">que es ruido de la plata</button>
+                <button class="sidebar-item" onclick="showSection('doscientos')">200km</button>
+                <button class="sidebar-item" onclick="showSection('radio')">radio del rio</button>
+                <button class="sidebar-item" onclick="showSection('contacto')">contacto</button>
+            </nav>
+            
+            <!-- Microdatos en sidebar -->
+            <div class="microdata-container">
+                <div class="microdata-technical">
+                    <div class="microdata-readings">
+                        <div class="microdata-line">● MONTEVIDEO <span id="sidebarClock">14:32:47</span></div>
+                        <div class="microdata-line">AGUA <span id="sidebarWaterTemp">16.2°C</span> ≈ ALTITUD 0.8M</div>
+                        <div class="microdata-line">CORRIENTE <span id="sidebarCurrentDir">SE-E</span> ⌇ PRESIÓN <span id="sidebarPressure">1013.2</span> hPa</div>
+                        <div class="microdata-line">VIENTO <span id="sidebarWindSpeed">12.4</span> km/h ○ HUMEDAD <span id="sidebarHumidity">78</span>%</div>
+                        <div class="microdata-line">〰️</div>
+                        <div class="microdata-line">© 2025</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PANEL DERECHO CON SCROLL - CONTENIDO -->
+        <main class="content-area">
+            <!-- Sección Home -->
+            <section id="home" class="section active">
+                <div class="content-block">
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/UkBSbXr.jpeg" alt="Ruido de la plata - Inicio" class="section-image">
+                        <div class="photo-caption">© Victoria Solnik</div>
+                    </div>
+                </div>
+                
+                <!-- Microdatos flotantes en home - solo móvil -->
+                <div class="home-microdata mobile-only">
+                    <div class="microdata-container visible">
+                        <div class="microdata-technical">
+                            <div class="microdata-readings">
+                                <div class="microdata-line">● MONTEVIDEO <span id="homeClock">14:32:47</span></div>
+                                <div class="microdata-line">AGUA <span id="homeWaterTemp">16.2°C</span> ≈ ALTITUD 0.8M</div>
+                                <div class="microdata-line">CORRIENTE <span id="homeCurrentDir">SE-E</span> ⌇ PRESIÓN <span id="homePressure">1013.2</span> hPa</div>
+                                <div class="microdata-line">VIENTO <span id="homeWindSpeed">12.4</span> km/h ○ HUMEDAD <span id="homeHumidity">78</span>%</div>
+                                <div class="microdata-line">〰️</div>
+                                <div class="microdata-line">© 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Quienes somos -->
+            <section id="quienes" class="section">
+                <div class="content-block">
+                    <div class="text-block">
+                        <h2 class="section-title">quienes somos</h2>
+                        <p><strong>Victoria Solnik, montevideo, uruguay (1984)</strong> artista visual y curadora. Su obra explora los vínculos entre territorios y memorias a través de prácticas que combinan el registro visual, sonoro, archivo y performance.</p>
+                        
+                        <p>Es coordinadora de curadurías del centro de fotografía de montevideo y ha trabajado en festivales como san josé foto (uy) y verzasca fotofest (sw).</p>
+                        
+                        <p>Fue jurado de los premios sony (swpa 2025) (uk) y colabora como curadora en la plataforma vist. Acompaña procesos curatoriales para el diseño de exposiciones en montevideo.</p>
+                        
+                        <p>Es co-fundadora del colectivo polenta para publicaciones fotográficas y es parte del photobook club de montevideo. Ha participado en residencias artísticas en la costa de la rambla sur de montevideo en un proyecto de registro audiovisual que también se despliega en la creación sonora.</p>
+                    </div>
+                    
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/Y7CGTcy.jpeg" alt="Victoria Solnik" class="section-image">
+                        <div class="photo-caption">© Federico Pignatta</div>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p><strong>Federico pignatta, florida, uruguay (1986)</strong> se dedica al diseño gráfico, investiga en artes visuales y experimentación sonora. Su práctica fusiona pensamiento conceptual con métodos experimentales y tecnologías emergentes.</p>
+                        
+                        <p>Ha desarrollado talleres de arte especialmente dirigidos a comunidades en contexto de encierro, promoviendo procesos creativos inclusivos y participativos. Formó parte del colectivo atlántico negro (sintetizador), y como productor musical, destaca su colaboración con cedric myton (the congos).</p>
+                        
+                        <p>Es fundador y director creativo de holomate, una plataforma web para la creación musical que incluye un controlador midi portátil, contribuyendo a ampliar las posibilidades de creación musical digital.</p>
+                    </div>
+                    
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/vQaNcIY.jpeg" alt="Federico Pignatta" class="section-image">
+                        <div class="photo-caption">© Victoria Solnik</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Que hacemos -->
+            <section id="hacemos" class="section">
+                <div class="content-block">
+                    <div class="text-block">
+                        <h2 class="section-title">que hacemos</h2>
+                        <p>Desplegamos performances sonoras que exploran las resonancias, flujos y texturas acústicas de este cuerpo de agua. Mediante la cuidadosa intersección de registros de campo, procesamientos digitales y momentos de improvisación, originamos espacios de escucha alternativos para abordar las complejidades de la relación histórica y político-política con el entorno, revelando nuevas capas de significado en la experiencia sonora.</p>
+                    </div>
+                    
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/LaQgDv0.jpeg" alt="Que hacemos" class="section-image">
+                        <div class="photo-caption">© Gabriel Adda</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Que es ruido de la plata -->
+            <section id="ruido" class="section">
+                <div class="content-block">
+                    <div class="text-block">
+                        <h2 class="section-title">que es ruido de la plata</h2>
+                        <p><strong>Investigación y experimentación sonora.</strong></p>
+                        
+                        <p>Ruido de la Plata articula un proceso de investigación artística que comprende el paisaje sonoro como territorio de conocimiento. A través de metodologías experimentales que combinan derivas urbanas, cartografías afectivas y tecnologías de escucha, el proyecto desarrolla un archivo sensible de las transformaciones territoriales y memoriales vinculadas a la rambla sur de Montevideo.</p>
+                    </div>
+                    
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/nRvXKB1.jpeg" alt="Investigación 1" class="section-image">
+                        <div class="photo-caption">© Victoria Solnik</div>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p>Esta práctica de investigación-creación establece diálogos entre cuerpo, agua y paisaje, entendiendo el sonido como una forma de conocimiento situado que revela las capas ocultas de la experiencia urbana. Los registros de campo, procesos de escucha profunda y performance electroacústica funcionan como herramientas de investigación que permiten acceder a dimensiones políticas, poéticas y afectivas del territorio.</p>
+                    </div>
+                    
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/PpLXgnL.jpeg" alt="Investigación 2" class="section-image">
+                        <div class="photo-caption">© Victoria Solnik</div>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p>El proyecto se materializa en conciertos, instalaciones y acciones site-specific que funcionan como dispositivos de transmisión de este conocimiento sonoro, invitando a experimentar formas alternativas de habitar y comprender la ciudad a través de la escucha activa y la reflexión crítica sobre nuestras relaciones con el entorno.</p>
+                    </div>
+                    
+                    <div class="image-full">
+                        <img src="https://i.imgur.com/23rY4el.jpeg" alt="Investigación 3" class="section-image">
+                        <div class="photo-caption">© Federico Pignatta</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 200km -->
+            <section id="doscientos" class="section">
+                <div class="content-block">
+                    <div class="image-full">
+                        <img src="../assets/afiche_PAR.jpeg" alt="200km - afiche PAR" class="section-image">
+                    </div>
+
+                    <div class="text-block">
+                        <h2 class="section-title">A 200 km</h2>
+                        <p class="section-subtitle">Antes del nombre Río de la Plata</p>
+                        <p class="section-tagline">pieza de drone y frecuencia sostenida</p>
+
+                        <p>¿Qué nos dice el río?<br>¿A quién le habla?<br>¿Quién lo escucha?</p>
+
+                        <p>A 200 km, Antes del nombre Río de la Plata, no es una performance sobre el río.<br>Es una performance desde el río: desde su tiempo profundo, desde su lógica de sedimentación y desde su manera de transformar sin borrar.</p>
+
+                        <p>El río también podría leerse como un archivo líquido: guarda, registra, acumula.<br>Como la cinta magnética, que registra y degrada.<br>Como la memoria colectiva.<br>Cada época deja su rumor.</p>
+
+                        <p>Hace unos quince mil años, cuando el nivel del mar era mucho más bajo, la costa estaba a cientos de kilómetros de aquí.<br>Mucho antes de llamarse Río de la Plata, avanzó lentamente —con la lentitud de lo que no pide permiso— hasta este lugar.<br>Desde entonces convivimos con él, como si siempre hubiera estado aquí.</p>
+
+                        <p>Esta pieza se mueve en esa escala de tiempo.</p>
+
+                        <p>El sonido comienza antes de que el público llegue.<br>Varias corrientes de ruido, moduladas lentamente, generan una respiración grave que recuerda el movimiento de las olas. El sonido ya estaba. Siempre estuvo antes.</p>
+
+                        <p>El dúo no interpreta el río. Trabaja desde su orilla.<br>Dos personas, en un escritorio, acompañan el tiempo.<br>Con la precisión de quien trabaja con un archivo<br>y la paciencia de quien conoce el viento del sur.<br>Los cuerpos permanecen casi inmóviles.<br>El sonido hace el resto.</p>
+
+                        <p>Los instrumentos no ilustran el río.<br>Son el río.</p>
+
+                        <p>El shruti box sostiene un drone continuo: una corriente sonora que habita el paisaje, como el viento sobre el agua.</p>
+
+                        <p>La cinta magnética guarda capas del río: recuerda, degrada, acumula, como el sedimento que conserva restos del tiempo.</p>
+
+                        <p>Los sintetizadores analógicos abren otros drones en distintas frecuencias: movimientos de tono casi imperceptibles dentro de la corriente, como el flujo del agua entre piedras.</p>
+
+                        <p>Entre estos planos, algunas melodías aparecen como destellos de luz, breves y efímeros, atravesando la corriente sonora.</p>
+
+                        <p>Dos voces emergen en ese paisaje sonoro.<br>No narran: sedimentan.<br>Se superponen, se desfasan, se interrumpen.<br>Dentro del agua, la palabra se disuelve y se acerca a la frecuencia.</p>
+
+                        <p>Estas preguntas permanecen abiertas:</p>
+
+                        <p>¿Qué nos dice el río?<br>¿A quién le habla?<br>¿Quién lo escucha?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Radio del rio -->
+            <section id="radio" class="section">
+                <div class="content-block">
+                    <div class="text-block">
+                        <h2 class="section-title">radio del rio</h2>
+                        <p><strong>rio vivo</strong> (idea que charlamos hoy con el cafecito)</p>
+                    </div>
+                    
+                    <!-- Sintetizador Virtual Drone - Versión Armónica -->
+                    <div class="drone-synthesizer harmony" id="droneSynth">
+                        <div class="synth-header">
+                            <div class="synth-title">GENERADOR ARMÓNICO</div>
+                            <div class="synth-status" id="synthStatus">SILENCIO</div>
+                        </div>
+                        
+                        <div class="harmony-grid">
+                            <!-- Oscilador Fundamental - Temperatura -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">FUNDAMENTAL</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(0)" id="harm0Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob0" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">TEMP</div>
+                                    <div class="knob-value" id="temp0Value">16.2°</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq0Display">110.0 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Oscilador Quinta - Presión -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">QUINTA</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(1)" id="harm1Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob1" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">PRES</div>
+                                    <div class="knob-value" id="pres1Value">1013</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq1Display">165.0 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Oscilador Octava - Humedad -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">OCTAVA</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(2)" id="harm2Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob2" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">HUMI</div>
+                                    <div class="knob-value" id="humi2Value">78%</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq2Display">220.0 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Oscilador Tercera - Viento -->
+                            <div class="harmony-module">
+                                <div class="module-header">
+                                    <div class="module-label">TERCERA</div>
+                                    <button class="harmony-power" onclick="toggleHarmonyOsc(3)" id="harm3Power">●</button>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="circular-knob" id="knob3" data-value="0.5">
+                                        <div class="knob-indicator"></div>
+                                        <div class="knob-center"></div>
+                                    </div>
+                                    <div class="knob-label">VIEN</div>
+                                    <div class="knob-value" id="wind3Value">12.4</div>
+                                </div>
+                                <div class="frequency-display">
+                                    <span id="freq3Display">138.6 Hz</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Control Master -->
+                            <div class="master-section">
+                                <div class="master-header">ARMONÍA</div>
+                                <button class="master-toggle" onclick="toggleHarmonyMaster()" id="harmonyMaster">
+                                    <div class="master-indicator"></div>
+                                </button>
+                                <div class="master-label">ACTIVAR</div>
+                                
+                                <!-- Visualizador de Acordes -->
+                                <div class="chord-display">
+                                    <div class="chord-name" id="chordName">C MAJ</div>
+                                    <div class="chord-notes">
+                                        <span class="note" id="note0">C</span>
+                                        <span class="note" id="note1">E</span>
+                                        <span class="note" id="note2">G</span>
+                                        <span class="note" id="note3">C</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Panel de Información -->
+                            <div class="info-panel">
+                                <div class="info-header">DATOS → MÚSICA</div>
+                                <div class="mapping-info">
+                                    <div class="mapping-item">
+                                        <span class="data-type">TEMPERATURA</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">FUNDAMENTAL</span>
+                                    </div>
+                                    <div class="mapping-item">
+                                        <span class="data-type">PRESIÓN</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">QUINTA</span>
+                                    </div>
+                                    <div class="mapping-item">
+                                        <span class="data-type">HUMEDAD</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">OCTAVA</span>
+                                    </div>
+                                    <div class="mapping-item">
+                                        <span class="data-type">VIENTO</span>
+                                        <span class="arrow">→</span>
+                                        <span class="music-param">TERCERA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stream de datos en tiempo real -->
+                        <div class="data-stream-harmony">
+                            <div class="stream-title">CONDICIONES ACTUALES DEL RÍO</div>
+                            <div class="stream-grid">
+                                <div class="stream-item">
+                                    <span class="stream-label">temperatura agua</span>
+                                    <span class="stream-value" id="liveTemp2">16.2°C</span>
+                                </div>
+                                <div class="stream-item">
+                                    <span class="stream-label">presión atmosférica</span>
+                                    <span class="stream-value" id="livePres2">1013.2 hPa</span>
+                                </div>
+                                <div class="stream-item">
+                                    <span class="stream-label">humedad relativa</span>
+                                    <span class="stream-value" id="liveHumi2">78%</span>
+                                </div>
+                                <div class="stream-item">
+                                    <span class="stream-label">velocidad viento</span>
+                                    <span class="stream-value" id="liveWind2">12.4 km/h</span>
+                                </div>
+                                <div class="stream-item time-item">
+                                    <span class="stream-label">montevideo</span>
+                                    <span class="stream-value" id="liveTime2">--:--:--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Microdatos del Río de la Plata -->
+                    <div class="river-data">
+                        <div class="river-data-title">— datos en tiempo real</div>
+                        <div class="river-data-grid">
+                            <div class="river-data-item">
+                                <span class="river-data-label">temperatura agua:</span>
+                                <span class="river-data-value" id="waterTemp">16.2°c</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">altitud:</span>
+                                <span class="river-data-value">0.8m</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">dirección corriente:</span>
+                                <span class="river-data-value" id="currentDir">se-e</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">presión atmosférica:</span>
+                                <span class="river-data-value" id="pressure">1013.2 hpa</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">viento:</span>
+                                <span class="river-data-value" id="windSpeed">12.4 km/h</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">humedad:</span>
+                                <span class="river-data-value" id="humidity">78%</span>
+                            </div>
+                            <div class="river-data-item">
+                                <span class="river-data-label">montevideo:</span>
+                                <span class="river-data-value" id="liveClock">[--:--:--]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="section">
+                <div class="content-block">
+                    <div class="text-block">
+                        <h2 class="section-title">contacto</h2>
+                        <p class="email-contact">hola@ruidodelaplata.uy</p>
+                        <div class="call-to-action">
+                            <p>Contacto para colaboraciones o exhibiciones.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scroll fijo en la parte inferior -->
+    <div class="scroll-bar-fixed" id="scrollBarFixed">
+        <div class="scroll-content-fixed">
+            • DESARROLLANDO PROCESOS DE INVESTIGACIÓN ARTÍSTICA EN EL PAISAJE SONORO DEL RÍO DE LA PLATA COMO TERRITORIO DE CONOCIMIENTO Y EXPERIENCIA SENSIBLE •
+        </div>
+        <button class="scroll-close-btn" onclick="closeScrollBar()">×</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
