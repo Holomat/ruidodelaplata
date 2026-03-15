@@ -158,6 +158,10 @@ body {
     opacity: 1;
 }
 
+.sidebar-gap {
+    height: 20px;
+}
+
 .sidebar-item.visible {
     opacity: 1;
 }
@@ -341,7 +345,290 @@ body {
 }
 
 /* =================================
-   HARMONY SYNTHESIZER STYLES - NORDIC MINIMAL
+   DRONE DEL RÍO — TE STYLE
+   ================================= */
+
+.drone-te {
+    background: #0f0f0f;
+    border-radius: 4px;
+    padding: 20px 20px 28px;
+    margin-bottom: 40px;
+    position: relative;
+    /* dot matrix background — hardware feel */
+    background-image: radial-gradient(circle, #1e1e1e 1px, transparent 1px);
+    background-size: 10px 10px;
+    background-color: #0f0f0f;
+}
+
+/* Header */
+.te-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.te-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.te-title {
+    font-family: var(--mono-font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #efefef;
+    text-transform: uppercase;
+}
+
+.te-status {
+    font-family: var(--mono-font);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: #555;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.te-status.active {
+    color: #D63C2F;
+}
+
+.te-led {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #333;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.te-status.active .te-led {
+    background: #D63C2F;
+    box-shadow: 0 0 6px #D63C2F;
+}
+
+.te-master-btn {
+    font-family: var(--mono-font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #555;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 2px;
+    padding: 6px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.te-master-btn:hover {
+    border-color: #666;
+    color: #efefef;
+}
+
+.te-master-btn.active {
+    background: #D63C2F;
+    border-color: #D63C2F;
+    color: #efefef;
+    box-shadow: 0 0 12px rgba(214, 60, 47, 0.4);
+}
+
+/* Faders row */
+.te-faders-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+}
+
+.te-channel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 8px;
+}
+
+.te-fader-wrap {
+    height: 100px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+}
+
+/* Vertical fader via rotation */
+.te-fader {
+    width: 100px;
+    height: 28px;
+    transform: rotate(-90deg);
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    transform-origin: center center;
+    position: absolute;
+}
+
+.te-fader::-webkit-slider-runnable-track {
+    background: #222;
+    height: 3px;
+    border-radius: 2px;
+    border: none;
+}
+
+.te-fader::-moz-range-track {
+    background: #222;
+    height: 3px;
+    border-radius: 2px;
+    border: none;
+}
+
+.te-fader::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #efefef;
+    border-radius: 50%;
+    margin-top: -8.5px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0 2px #0f0f0f, 0 0 0 3px #333;
+}
+
+.te-fader::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #efefef;
+    border-radius: 50%;
+    border: 2px solid #0f0f0f;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.te-channel.active .te-fader::-webkit-slider-thumb {
+    background: #D63C2F;
+    box-shadow: 0 0 0 2px #0f0f0f, 0 0 0 3px #D63C2F, 0 0 8px rgba(214, 60, 47, 0.5);
+}
+
+.te-channel.active .te-fader::-moz-range-thumb {
+    background: #D63C2F;
+    border-color: #D63C2F;
+}
+
+.te-freq {
+    font-family: var(--mono-font);
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #444;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.te-channel.active .te-freq {
+    color: #888;
+}
+
+/* Circles row */
+.te-circles-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 16px 4px 0;
+    gap: 8px;
+}
+
+.te-circle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+/* Staggered offsets — scattered bubble feel */
+.te-offset-0 { margin-top: 0px; }
+.te-offset-1 { margin-top: 18px; }
+.te-offset-2 { margin-top: 6px; }
+.te-offset-3 { margin-top: 26px; }
+
+.te-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #2e2e2e;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.te-circle::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    transition: background 0.25s;
+}
+
+.te-circle:hover {
+    border-color: #555;
+}
+
+.te-circle:hover::after {
+    background: #2a2a2a;
+}
+
+.te-circle.active {
+    border-color: #D63C2F;
+    box-shadow: 0 0 0 1px rgba(214, 60, 47, 0.3), 0 0 16px rgba(214, 60, 47, 0.25);
+}
+
+.te-circle.active::after {
+    background: #D63C2F;
+}
+
+@keyframes tePulse {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(214, 60, 47, 0.3), 0 0 16px rgba(214, 60, 47, 0.25); }
+    50% { box-shadow: 0 0 0 2px rgba(214, 60, 47, 0.2), 0 0 28px rgba(214, 60, 47, 0.4); }
+}
+
+.te-circle.active {
+    animation: tePulse 3s ease-in-out infinite;
+}
+
+.te-circle-label {
+    font-family: var(--mono-font);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #333;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.te-circle-wrap:has(.te-circle.active) .te-circle-label {
+    color: #888;
+}
+
+/* =================================
+   HARMONY SYNTHESIZER STYLES - NORDIC MINIMAL (legacy, hidden)
    ================================= */
 
 .drone-synthesizer.harmony {

@@ -180,65 +180,113 @@ function updateKnobRotations(temp, pressure, humidity, wind) {
     });
 }
 
+// SET VOLUMEN DE OSCILADOR VÍA FADER
+function setOscVolume(index, value) {
+    if (!harmonyContext) initHarmonyContext();
+    if (harmonyContext.state === 'suspended') harmonyContext.resume();
+
+    const vol = (value / 100) * 0.35;
+    const channel = document.getElementById(`channel${index}`);
+
+    if (value > 0 && !harmonyOscillators[index]) {
+        // Arrancar oscilador si no estaba corriendo
+        const frequencies = mapDataToHarmony();
+        const freqArray = [frequencies.fundamental, frequencies.fifth, frequencies.octave, frequencies.third];
+
+        harmonyOscillators[index] = harmonyContext.createOscillator();
+        harmonyOscillators[index].type = 'sine';
+        harmonyOscillators[index].frequency.setValueAtTime(freqArray[index], harmonyContext.currentTime);
+        harmonyOscillators[index].connect(harmonyGains[index]);
+        harmonyOscillators[index].start();
+
+        const filterFreq = mapValue(visualizerData.humidity, 30, 100, 400, 1200);
+        harmonyFilters[index].frequency.setValueAtTime(filterFreq, harmonyContext.currentTime);
+
+        const powerBtn = document.getElementById(`harm${index}Power`);
+        if (powerBtn) powerBtn.classList.add('active');
+        if (channel) channel.classList.add('active');
+    }
+
+    if (harmonyGains[index]) {
+        if (vol > 0) {
+            harmonyGains[index].gain.setTargetAtTime(vol, harmonyContext.currentTime, 0.05);
+        } else {
+            harmonyGains[index].gain.setTargetAtTime(0.0001, harmonyContext.currentTime, 0.1);
+            setTimeout(() => {
+                if (harmonyOscillators[index] && document.getElementById(`fader${index}`)?.value == 0) {
+                    harmonyOscillators[index].stop();
+                    harmonyOscillators[index] = null;
+                    const powerBtn = document.getElementById(`harm${index}Power`);
+                    if (powerBtn) powerBtn.classList.remove('active');
+                    if (channel) channel.classList.remove('active');
+                }
+            }, 300);
+        }
+    }
+
+    updateHarmonyStatus();
+}
+
 // TOGGLE OSCILADOR ARMÓNICO INDIVIDUAL
 function toggleHarmonyOsc(index) {
     console.log(`🎵 Toggle oscilador ${index}`);
-    
+
     if (!harmonyContext) {
         initHarmonyContext();
     }
-    
-    // Reanudar contexto si está suspendido
+
     if (harmonyContext.state === 'suspended') {
         harmonyContext.resume();
     }
-    
+
     const powerBtn = document.getElementById(`harm${index}Power`);
-    const module = powerBtn.closest('.harmony-module');
-    
-    if (!powerBtn || !module) {
-        console.error(`❌ No se encontraron elementos para oscilador ${index}`);
-        return;
-    }
-    
+    const channel = document.getElementById(`channel${index}`);
+
+    if (!powerBtn) return;
+
     if (harmonyOscillators[index]) {
         // Apagar oscilador
-        console.log(`🔇 Apagando oscilador ${index}`);
-        harmonyGains[index].gain.exponentialRampToValueAtTime(0.001, harmonyContext.currentTime + 0.5);
+        harmonyGains[index].gain.setTargetAtTime(0.0001, harmonyContext.currentTime, 0.1);
         setTimeout(() => {
             if (harmonyOscillators[index]) {
                 harmonyOscillators[index].stop();
                 harmonyOscillators[index] = null;
             }
-        }, 500);
-        
+        }, 400);
+
         powerBtn.classList.remove('active');
-        module.classList.remove('active');
-        
+        if (channel) channel.classList.remove('active');
+
+        // Reset fader
+        const fader = document.getElementById(`fader${index}`);
+        if (fader) fader.value = 0;
+
     } else {
         // Encender oscilador
-        console.log(`🔊 Encendiendo oscilador ${index}`);
         const frequencies = mapDataToHarmony();
         const freqArray = [frequencies.fundamental, frequencies.fifth, frequencies.octave, frequencies.third];
-        
+
         harmonyOscillators[index] = harmonyContext.createOscillator();
         harmonyOscillators[index].type = 'sine';
         harmonyOscillators[index].frequency.setValueAtTime(freqArray[index], harmonyContext.currentTime);
-        
         harmonyOscillators[index].connect(harmonyGains[index]);
         harmonyOscillators[index].start();
-        
+
         const amplitude = mapValue(visualizerData.pressure, 990, 1030, 0.08, 0.25);
-        harmonyGains[index].gain.setValueAtTime(0.001, harmonyContext.currentTime);
+        harmonyGains[index].gain.setValueAtTime(0.0001, harmonyContext.currentTime);
         harmonyGains[index].gain.exponentialRampToValueAtTime(amplitude, harmonyContext.currentTime + 1.0);
-        
+
         const filterFreq = mapValue(visualizerData.humidity, 30, 100, 400, 1200);
         harmonyFilters[index].frequency.setValueAtTime(filterFreq, harmonyContext.currentTime);
-        
+
         powerBtn.classList.add('active');
-        module.classList.add('active');
+        if (channel) channel.classList.add('active');
+
+        // Sync fader
+        const fader = document.getElementById(`fader${index}`);
+        if (fader) fader.value = Math.round(amplitude / 0.35 * 100);
     }
-    
+
     updateHarmonyStatus();
 }
 
@@ -265,9 +313,9 @@ function toggleHarmonyMaster() {
         console.log('🔊 Activando master armónico');
         masterBtn.classList.add('active');
         if (masterSection) masterSection.classList.add('active');
-        statusElement.textContent = 'ARMONÍA';
+        statusElement.innerHTML = '<span class="te-led"></span>ACTIVO';
         statusElement.classList.add('active');
-        
+
         if (harmonyContext.state === 'suspended') {
             harmonyContext.resume();
         }
@@ -275,7 +323,7 @@ function toggleHarmonyMaster() {
         console.log('🔇 Desactivando master armónico');
         masterBtn.classList.remove('active');
         if (masterSection) masterSection.classList.remove('active');
-        statusElement.textContent = 'SILENCIO';
+        statusElement.innerHTML = '<span class="te-led"></span>SILENCIO';
         statusElement.classList.remove('active');
         
         for (let i = 0; i < 4; i++) {
@@ -292,12 +340,16 @@ function updateHarmonyStatus() {
     const statusElement = document.getElementById('synthStatus');
     
     if (statusElement) {
+        const led = '<span class="te-led"></span>';
         if (harmonyActive && activeOscs > 0) {
-            statusElement.textContent = `ARMONÍA [${activeOscs}/4]`;
+            statusElement.innerHTML = `${led}ACTIVO [${activeOscs}/4]`;
+            statusElement.classList.add('active');
         } else if (harmonyActive) {
-            statusElement.textContent = 'PREPARADO';
+            statusElement.innerHTML = `${led}PREPARADO`;
+            statusElement.classList.add('active');
         } else {
-            statusElement.textContent = 'SILENCIO';
+            statusElement.innerHTML = `${led}SILENCIO`;
+            statusElement.classList.remove('active');
         }
     }
 }
