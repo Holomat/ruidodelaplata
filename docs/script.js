@@ -180,8 +180,15 @@ function updateKnobRotations(temp, pressure, humidity, wind) {
     });
 }
 
+// ACTUALIZAR FILL VISUAL DEL FADER
+function updateFaderFill(index, value) {
+    const fill = document.getElementById(`fill${index}`);
+    if (fill) fill.style.height = value + '%';
+}
+
 // SET VOLUMEN DE OSCILADOR VÍA FADER
 function setOscVolume(index, value) {
+    updateFaderFill(index, value);
     if (!harmonyContext) initHarmonyContext();
     if (harmonyContext.state === 'suspended') harmonyContext.resume();
 
@@ -260,6 +267,7 @@ function toggleHarmonyOsc(index) {
         // Reset fader
         const fader = document.getElementById(`fader${index}`);
         if (fader) fader.value = 0;
+        updateFaderFill(index, 0);
 
     } else {
         // Encender oscilador
@@ -284,7 +292,9 @@ function toggleHarmonyOsc(index) {
 
         // Sync fader
         const fader = document.getElementById(`fader${index}`);
-        if (fader) fader.value = Math.round(amplitude / 0.35 * 100);
+        const faderVal = Math.round(amplitude / 0.35 * 100);
+        if (fader) fader.value = faderVal;
+        updateFaderFill(index, faderVal);
     }
 
     updateHarmonyStatus();

@@ -203,9 +203,8 @@
                 <div class="content-block">
                     <div class="text-block">
                         <h2 class="section-title">radio del rio</h2>
-                        <p><strong>rio vivo</strong> (idea que charlamos hoy con el cafecito)</p>
                     </div>
-                    
+
                     <!-- Drone del Río - TE Style -->
                     <div class="drone-te" id="droneSynth">
 
@@ -218,26 +217,30 @@
                         </div>
 
                         <div class="te-faders-row">
-                            <div class="te-channel" id="channel0">
+                            <div class="te-channel" id="channel0" style="--ch-color: #E5D44B">
                                 <div class="te-fader-wrap">
+                                    <div class="te-track"><div class="te-track-fill" id="fill0"></div></div>
                                     <input type="range" class="te-fader" id="fader0" min="0" max="100" value="0" oninput="setOscVolume(0, this.value)">
                                 </div>
                                 <div class="te-freq" id="freq0Display">110 Hz</div>
                             </div>
-                            <div class="te-channel" id="channel1">
+                            <div class="te-channel" id="channel1" style="--ch-color: #4DC5A8">
                                 <div class="te-fader-wrap">
+                                    <div class="te-track"><div class="te-track-fill" id="fill1"></div></div>
                                     <input type="range" class="te-fader" id="fader1" min="0" max="100" value="0" oninput="setOscVolume(1, this.value)">
                                 </div>
                                 <div class="te-freq" id="freq1Display">165 Hz</div>
                             </div>
-                            <div class="te-channel" id="channel2">
+                            <div class="te-channel" id="channel2" style="--ch-color: #9B8EC4">
                                 <div class="te-fader-wrap">
+                                    <div class="te-track"><div class="te-track-fill" id="fill2"></div></div>
                                     <input type="range" class="te-fader" id="fader2" min="0" max="100" value="0" oninput="setOscVolume(2, this.value)">
                                 </div>
                                 <div class="te-freq" id="freq2Display">220 Hz</div>
                             </div>
-                            <div class="te-channel" id="channel3">
+                            <div class="te-channel" id="channel3" style="--ch-color: #E87060">
                                 <div class="te-fader-wrap">
+                                    <div class="te-track"><div class="te-track-fill" id="fill3"></div></div>
                                     <input type="range" class="te-fader" id="fader3" min="0" max="100" value="0" oninput="setOscVolume(3, this.value)">
                                 </div>
                                 <div class="te-freq" id="freq3Display">139 Hz</div>
@@ -245,19 +248,19 @@
                         </div>
 
                         <div class="te-circles-row">
-                            <div class="te-circle-wrap te-offset-0">
+                            <div class="te-circle-wrap te-offset-0" style="--ch-color: #E5D44B">
                                 <button class="te-circle" onclick="toggleHarmonyOsc(0)" id="harm0Power"></button>
                                 <span class="te-circle-label">FND</span>
                             </div>
-                            <div class="te-circle-wrap te-offset-1">
+                            <div class="te-circle-wrap te-offset-1" style="--ch-color: #4DC5A8">
                                 <button class="te-circle" onclick="toggleHarmonyOsc(1)" id="harm1Power"></button>
                                 <span class="te-circle-label">QTA</span>
                             </div>
-                            <div class="te-circle-wrap te-offset-2">
+                            <div class="te-circle-wrap te-offset-2" style="--ch-color: #9B8EC4">
                                 <button class="te-circle" onclick="toggleHarmonyOsc(2)" id="harm2Power"></button>
                                 <span class="te-circle-label">OCT</span>
                             </div>
-                            <div class="te-circle-wrap te-offset-3">
+                            <div class="te-circle-wrap te-offset-3" style="--ch-color: #E87060">
                                 <button class="te-circle" onclick="toggleHarmonyOsc(3)" id="harm3Power"></button>
                                 <span class="te-circle-label">TRC</span>
                             </div>
