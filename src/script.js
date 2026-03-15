@@ -502,6 +502,57 @@ async function updateRiverData() {
     }
 }
 
+// FUNCIÓN PARA CONVERTIR GRADOS A CARDINAL
+function degreesToCardinal(deg) {
+    if (deg === null || deg === undefined) return '—';
+    const dirs = ['n', 'n-ne', 'ne', 'e-ne', 'e', 'e-se', 'se', 's-se', 's', 's-sw', 'sw', 'w-sw', 'w', 'w-nw', 'nw', 'n-nw'];
+    return dirs[Math.round(deg / 22.5) % 16];
+}
+
+// Datos marinos (wave height, ocean current, sea surface temp)
+async function updateMarineData() {
+    try {
+        const response = await fetch('https://marine-api.open-meteo.com/v1/marine?latitude=-34.9&longitude=-56.2&current=wave_height,wave_direction,ocean_current_velocity,ocean_current_direction,sea_surface_temperature');
+        const data = await response.json();
+
+        if (data && data.current) {
+            const c = data.current;
+
+            // Oleaje
+            const waveHeight = c.wave_height !== null ? c.wave_height.toFixed(1) : '—';
+            ['sidebarWaveHeight', 'homeWaveHeight'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = waveHeight;
+            });
+
+            // Corriente: dirección y velocidad reales
+            const currentDir = degreesToCardinal(c.ocean_current_direction);
+            const currentSpeed = c.ocean_current_velocity !== null ? c.ocean_current_velocity.toFixed(1) : '—';
+
+            ['sidebarCurrentDir', 'homeCurrentDir', 'currentDir'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = currentDir;
+            });
+            ['sidebarCurrentSpeed', 'homeCurrentSpeed'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = currentSpeed;
+            });
+
+            // Temperatura del agua (sea surface temp si está disponible)
+            if (c.sea_surface_temperature !== null && c.sea_surface_temperature !== undefined) {
+                const sst = c.sea_surface_temperature.toFixed(1);
+                visualizerData.temperature = parseFloat(sst);
+                ['waterTemp', 'homeWaterTemp', 'sidebarWaterTemp'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = `${sst}°c`;
+                });
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error obteniendo datos marinos:', error);
+    }
+}
+
 // Inicialización cuando carga la página
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Ruido de la plata - Sintetizador Armónico cargado');
@@ -510,9 +561,11 @@ document.addEventListener('DOMContentLoaded', function() {
     updateClocks();
     setInterval(updateClocks, 1000);
     
-    // Datos del río
+    // Datos del río y marinos
     updateRiverData();
-    setInterval(updateRiverData, 600000); // Cada 10 minutos
+    updateMarineData();
+    setInterval(updateRiverData, 600000);  // Cada 10 minutos
+    setInterval(updateMarineData, 600000); // Cada 10 minutos
     
     // Actualizar parámetros cada 5 segundos
     setInterval(() => {
