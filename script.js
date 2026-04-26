@@ -528,3 +528,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 2000);
 });
+
+// ── Audio Player ──
+(function () {
+    const audio = document.getElementById('audioEl');
+    const playBtn = document.getElementById('audioPlayBtn');
+    const iconPlay = document.getElementById('iconPlay');
+    const iconPause = document.getElementById('iconPause');
+    const timeline = document.getElementById('audioTimeline');
+    const playhead = document.getElementById('audioPlayhead');
+    const timeDisplay = document.getElementById('audioTime');
+
+    if (!audio) return;
+
+    function formatTime(s) {
+        const h = Math.floor(s / 3600);
+        const m = Math.floor((s % 3600) / 60);
+        const sec = Math.floor(s % 60);
+        return [h, m, sec].map(n => String(n).padStart(2, '0')).join(':');
+    }
+
+    function updatePlayhead() {
+        if (!audio.duration) return;
+        const pct = audio.currentTime / audio.duration;
+        playhead.style.left = (pct * 100) + '%';
+        timeDisplay.textContent = formatTime(audio.currentTime);
+    }
+
+    audio.addEventListener('timeupdate', updatePlayhead);
+
+    audio.addEventListener('ended', () => {
+        iconPlay.style.display = '';
+        iconPause.style.display = 'none';
+    });
+
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            iconPlay.style.display = 'none';
+            iconPause.style.display = '';
+        } else {
+            audio.pause();
+            iconPlay.style.display = '';
+            iconPause.style.display = 'none';
+        }
+    });
+
+    timeline.addEventListener('click', (e) => {
+        if (!audio.duration) return;
+        const rect = timeline.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+    });
+}());
