@@ -1500,6 +1500,51 @@ body {
         left: 0; /* Cubrir todo el ancho de pantalla */
         width: 100vw; /* Todo el ancho de pantalla */
     }
+
+    /* SECCIÓN 200KM - LAYOUT DOS COLUMNAS SIN SCROLL */
+    #doscientos .content-block {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0 40px;
+        height: calc(100vh - 150px);
+        margin-bottom: 0;
+    }
+
+    #doscientos .doscientos-left {
+        grid-column: 1;
+        overflow-y: auto;
+        height: 100%;
+        padding-right: 8px;
+    }
+
+    #doscientos .doscientos-left .text-block {
+        width: 100%;
+        float: none;
+        clear: none;
+        margin-bottom: 0;
+    }
+
+    #doscientos .audioplayer-wrapper {
+        width: 100%;
+    }
+
+    #doscientos .doscientos-image {
+        grid-column: 2;
+        width: 100%;
+        float: none;
+        clear: none;
+        margin-bottom: 0;
+        align-self: start;
+    }
+
+    #doscientos .doscientos-image img {
+        width: auto;
+        max-width: 100%;
+        max-height: 80vh;
+        height: auto;
+        display: block;
+    }
 }
 
 /* Responsive Design para Sintetizador */
